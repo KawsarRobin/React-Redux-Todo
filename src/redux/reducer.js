@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [];
 
 const addTodoReducer = createSlice({
-  name: "todos",
+  name: 'todos',
   initialState,
   reducers: {
     //here we will write our reducer
@@ -43,10 +43,6 @@ const addTodoReducer = createSlice({
   },
 });
 
-export const {
-  addTodos,
-  removeTodos,
-  updateTodos,
-  completeTodos,
-} = addTodoReducer.actions;
+export const { addTodos, removeTodos, updateTodos, completeTodos } =
+  addTodoReducer.actions;
 export const reducer = addTodoReducer.reducer;

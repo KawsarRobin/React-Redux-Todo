@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addTodos } from "../redux/reducer";
-import { GoPlus } from "react-icons/go";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { addTodos } from '../redux/reducer';
 
 const mapStateToProps = (state) => {
   return {
@@ -17,42 +16,53 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Todos = (props) => {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState('');
 
   const handleChange = (e) => {
     setTodo(e.target.value);
   };
 
   const add = () => {
-    if (todo === "") {
-      alert("Input is Empty");
+    if (todo === '') {
+      alert('Input is Empty');
     } else {
       props.addTodo({
         id: Math.floor(Math.random() * 1000),
         item: todo,
         completed: false,
       });
-      setTodo("");
+      setTodo('');
     }
   };
   //console.log("props from store", props);
   return (
     <div className="addTodos">
-      <input
+      {/* <input
         type="text"
         onChange={(e) => handleChange(e)}
         className="todo-input"
         value={todo}
-      />
+      /> */}
+      <InputGroup className="mb-3">
+        <FormControl
+          placeholder="Type New Todo"
+          aria-describedby="basic-addon2"
+          onChange={(e) => handleChange(e)}
+          value={todo}
+        />
+        <Button variant="dark" id="button-addon2" onClick={() => add()}>
+          Add
+        </Button>
+      </InputGroup>
 
-      <motion.button
+      {/* <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="add-btn"
         onClick={() => add()}
       >
         <GoPlus />
-      </motion.button>
+      </motion.button> */}
       <br />
     </div>
   );
